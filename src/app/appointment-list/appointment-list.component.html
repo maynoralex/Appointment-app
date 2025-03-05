@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="card mt-3">
+        <div class="row">
+            <div class="col">
+                <h2 class="text-center">Create new appointment</h2>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-6">
+                <input class="form-control" [(ngModel)]="newAppointmentTitle" type="text" placeholder="Appointment Description">
+            </div>
+            <div class="col-md-4">
+                <input class="form-control" [(ngModel)]="newAppointmentDate" type="date" placeholder="Appointment Date">
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-primary w-100" (click)="addAppointment()">Add</button>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="text-center mt-5">Appointments</h2>
+
+    <ul class="list-group mt-3" >
+        @for (app of appointments; track app.id; let i = $index) {
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              {{ app.title }} - {{ app.date | date : 'dd/MM/yyyy' }}
+              <button class="btn btn-danger" (click)="deleteAppointment(i)">Delete</button>
+            </li>
+            } 
+        <!-- <li *ngfor="let appointment of appointments">
+            {{appointment.title}} - {{appointment.date | date: 'dd/MM/yyyy'}}
+        </li> -->
+    </ul>
+</div>
+
+
+
